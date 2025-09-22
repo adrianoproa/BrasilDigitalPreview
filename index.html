@@ -10,34 +10,32 @@
 
         <script>
             window.wxOConfiguration = {
-                orchestrationID: "ed35393cbc92479d92420717ab5337fe",
+                orchestrationID:
+                    "ed35393cbc92479d92420717ab5337fe_336dd89a-c03d-4357-8dad-15f972d99467",
                 hostURL: "https://us-south.watson-orchestrate.cloud.ibm.com",
                 rootElementID: "root",
                 deploymentPlatform: "ibmcloud",
                 crn: "crn:v1:bluemix:public:watsonx-orchestrate:us-south:a/ed35393cbc92479d92420717ab5337fe:336dd89a-c03d-4357-8dad-15f972d99467::",
-                showLauncher: false,
-
                 chatOptions: {
                     agentId: "c6a28874-2513-4d39-ad9d-bdbebef77062",
                     agentEnvironmentId: "9308ee2a-42ee-455b-b677-5fe585053c3a",
                 },
-
                 layout: {
-                    form: "fullscreen-overlay",
-                    showOrchestrateHeader: true,
+                    form: "fullscreen-overlay", // Options: float | custom | fullscreen-overlay - if not specified float is default
+                    showOrchestrateHeader: true, // Optional: shows top agent header bar
+                    width: "600px", // Optional: honored when form is float only
+                    height: "600px", // Optional: honored when form is float only
                 },
             };
 
-            document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(function () {
                 const script = document.createElement("script");
                 script.src = `${window.wxOConfiguration.hostURL}/wxochat/wxoLoader.js?embed=true`;
                 script.addEventListener("load", function () {
-                    if (typeof wxoLoader !== "undefined") {
-                        wxoLoader.init();
-                    }
+                    wxoLoader.init();
                 });
                 document.head.appendChild(script);
-            });
+            }, 0);
         </script>
     </body>
 </html>
